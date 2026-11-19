@@ -1,0 +1,11 @@
+{
+  "name": "debugging-workshop-advanced-js",
+  "version": "1.0.0",
+  "description": "Buggy order processing system for VS Code debugging workshop",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "debug-scenarios": "node debugScenarios.js"
+  },
+  "license": "UNLICENSED"
+}
