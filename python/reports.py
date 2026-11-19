@@ -27,8 +27,8 @@ def category_summary(products):
         if category not in summary:
             summary[category] = {"product_count": 0, "total_stock": 0}
 
-        summary[category]["product_count"] += product["stock"]
-        summary[category]["total_stock"] += 1
+        summary[category]["product_count"] += 1
+        summary[category]["total_stock"] += product["stock"]
 
     return summary
 
