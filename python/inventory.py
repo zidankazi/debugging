@@ -4,6 +4,8 @@ def reserve_inventory(products, order):
         if product is not None:
             product["stock"] -= item["quantity"]
 
+            if product["stock"] < 0:
+                product["stock"] = 0
 
 def restock_product(products, product_id, amount):
     for product in products:
