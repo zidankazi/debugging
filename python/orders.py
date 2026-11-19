@@ -1,5 +1,10 @@
 from discounts import apply_discounts
-from validators import find_customer_by_id, find_product_by_id, validate_order
+from validators import (
+    find_customer_by_id,
+    find_product_by_id,
+    is_non_empty_string,
+    validate_order,
+)
 from inventory import reserve_inventory
 
 
@@ -29,9 +34,20 @@ def calculate_shipping(discounted_subtotal):
 
 
 def process_order(order, products, customers, tax_rates):
-    customer = find_customer_by_id(customers, order.get("customer_id"))
-
     errors = validate_order(order, products, customers)
+    customer_id = order.get("customer_id")
+    customer = (
+        find_customer_by_id(customers, customer_id)
+        if is_non_empty_string(customer_id)
+        else None
+    )
+    if errors:
+        return {
+            "order_id": order.get("id"),
+            "customer": customer["name"] if customer else "UNKNOWN",
+            "valid": False,
+            "errors": errors,
+        }
 
     subtotal = calculate_subtotal(order, products)
     discounts = apply_discounts(order, customer, products, subtotal)
