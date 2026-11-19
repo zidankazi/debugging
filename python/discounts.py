@@ -34,6 +34,8 @@ def bulk_discount_amount(items, products):
 
 
 def loyalty_discount_amount(customer, subtotal_after_coupon):
+    if not customer.get("loyalty"):
+        return 0
     return subtotal_after_coupon * LOYALTY_RATE
 
 
