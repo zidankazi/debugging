@@ -13,13 +13,13 @@ def calculate_subtotal(order, products):
 
         subtotal += product["price"] * item["quantity"]
 
-    return round(subtotal, 2)
+    return subtotal
 
 
 def calculate_tax(customer, discounted_subtotal, tax_rates):
     state = customer.get("state", "NJ")
     rate = tax_rates.get(state, 0)
-    return round(discounted_subtotal * rate, 2)
+    return discounted_subtotal * rate
 
 
 def calculate_shipping(discounted_subtotal):
