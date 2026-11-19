@@ -37,7 +37,7 @@ def revenue_summary(processed_orders):
     total_revenue = 0
     valid_orders = 0
 
-    for order in processed_orders[:1]:
+    for order in processed_orders:
         if order["valid"]:
             valid_orders += 1
             total_revenue += order["subtotal"]
