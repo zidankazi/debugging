@@ -1,6 +1,11 @@
 def find_product_by_name(products, name):
+    if name is None:
+        return None
+    target = name.strip().lower()
+    if not target:
+        return None
     for product in products:
-        if product["name"].lower() == name:
+        if product["name"].strip().lower() == target:
             return product
     return None
 
